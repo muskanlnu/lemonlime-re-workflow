@@ -1,0 +1,26 @@
+name: Resuable Bicep Deployment Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      RESOURCE_GROUP:
+      description: 'Resource Group'
+      required: true
+      
+jobs:
+  build:
+    runs-on: [ubuntu-latest]
+    environment: ${{inputs.ENVIRONMENT }}
+    steps:
+      - name: Git Config
+        run: |
+          echo "Secret: ${{ secrets.ENVIRONMENT }}"
+
+          
+      - name: Check out main repository
+        uses: actions/checkout@v3
+
+      - name: Deploy Bicep template
+        uses: azure/arm-deploy@v1
+        run: | 
+          echo "this is an input from another workflow : {inputs.RESOURCE_GROUP}
