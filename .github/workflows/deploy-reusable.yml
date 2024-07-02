@@ -21,4 +21,4 @@ jobs:
       - name: Deploy Bicep template
         uses: azure/arm-deploy@v1
         run: | 
-          echo "this is an input from another workflow : {inputs.RESOURCE_GROUP}
+          echo "this is an input from another workflow : {inputs.RESOURCE_GROUP}"
